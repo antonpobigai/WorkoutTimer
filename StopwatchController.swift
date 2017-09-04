@@ -13,6 +13,7 @@ class StopwatchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
     }
 
@@ -20,10 +21,8 @@ class StopwatchController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func editPressed(_ sender: UIButton) {
-        
+    @IBAction func invoke(_ sender: UIButton) {
     }
-    
     
 }
 

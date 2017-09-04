@@ -51,20 +51,7 @@
                                     <color key="titleColor" red="1" green="0.1300676026" blue="0.1893736523" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="editPressed:" destination="IT1-aL-lxp" eventType="touchUpInside" id="fPy-wW-022"/>
-                                    <segue destination="Mw0-Qh-qJE" kind="modal" identifier="Edit" id="kqL-OB-AaW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fCz-B0-7TW">
-                                <rect key="frame" x="308" y="122" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit2">
-                                    <color key="titleColor" red="1" green="0.1300676026" blue="0.1893736523" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="xjm-X5-UjL" kind="popover" identifier="Edit2" popoverAnchorView="fCz-B0-7TW" id="fT2-Rc-TWh">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="qcv-7q-0Vl" kind="modal" modalPresentationStyle="currentContext" id="pFZ-cx-e2U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,74 +61,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psA-C9-M1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="423.5" y="-628.5"/>
+            <point key="canvasLocation" x="447.5" y="-662.5"/>
         </scene>
         <!--Modal Edit Title Controller-->
-        <scene sceneID="2s4-nC-RSh">
+        <scene sceneID="Ekt-TR-iED">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="currentContext" id="Mw0-Qh-qJE" customClass="ModalEditTitleController" customModule="WorkoutTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="OXg-ME-g3f">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                <viewController id="qcv-7q-0Vl" customClass="ModalEditTitleController" customModule="WorkoutTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UlX-Bt-Y1X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="xLf-Gu-IVR">
-                                <rect key="frame" x="139" y="47" width="97" height="30"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="6jf-HP-kFx" userLabel="Modal View">
+                                <rect key="frame" x="67" y="269" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FUK-Y6-seV">
-                                <rect key="frame" x="50" y="131" width="274" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="modelDone:" destination="Mw0-Qh-qJE" eventType="touchUpInside" id="UWo-fq-uA2"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wSR-4V-mHo">
+                                        <rect key="frame" x="8" y="8" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="X"/>
+                                        <connections>
+                                            <action selector="modelDone:" destination="qcv-7q-0Vl" eventType="touchUpInside" id="NQY-fs-JRh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q0x-7q-9Hu">
+                                        <rect key="frame" x="180" y="200" width="40" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="ok:" destination="qcv-7q-0Vl" eventType="touchUpInside" id="QEA-DR-XXy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.96669986070000002" blue="0.31940855499999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.34619828345070425" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dgP-Xg-EHd"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="200"/>
+                    <size key="freeformSize" width="375" height="667"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q6f-jU-88P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-y9-Wu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.5" y="-876.5"/>
-        </scene>
-        <!--Popover Edit Controller-->
-        <scene sceneID="zfT-Zd-Skn">
-            <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="currentContext" id="xjm-X5-UjL" customClass="PopoverEditController" customModule="WorkoutTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="ac3-Bk-JZF">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="eUh-vA-fKZ">
-                                <rect key="frame" x="102" y="60" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="biq-sf-w00">
-                                <rect key="frame" x="65" y="120" width="170" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="popoverDone:" destination="xjm-X5-UjL" eventType="touchUpInside" id="qRd-ri-bFb"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="150"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="150"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HSg-uc-aww" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="895" y="-84"/>
+            <point key="canvasLocation" x="1049" y="-662"/>
         </scene>
         <!--Timer-->
         <scene sceneID="VCZ-BM-V4g">
@@ -246,6 +208,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSa-ca-GBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-773.75" y="162.30333333333331"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Cl0-zO-LDP">
+            <objects>
+                <viewController id="yp5-uA-p8g" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NU1-uY-gTZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d7F-5z-o2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

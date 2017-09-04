@@ -13,7 +13,6 @@
 		63DD4F6A1F5B44B40096E605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */; };
 		84EF9BAC1F5D6374009B17BB /* StopwatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9BAB1F5D6374009B17BB /* StopwatchController.swift */; };
 		84EF9BB61F5D9A1A009B17BB /* ModalEditTitleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9BB51F5D9A1A009B17BB /* ModalEditTitleController.swift */; };
-		84EF9BB81F5D9CA0009B17BB /* PopoverEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9BB71F5D9CA0009B17BB /* PopoverEditController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +24,6 @@
 		63DD4F6B1F5B44B40096E605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84EF9BAB1F5D6374009B17BB /* StopwatchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StopwatchController.swift; path = ../StopwatchController.swift; sourceTree = "<group>"; };
 		84EF9BB51F5D9A1A009B17BB /* ModalEditTitleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalEditTitleController.swift; sourceTree = "<group>"; };
-		84EF9BB71F5D9CA0009B17BB /* PopoverEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverEditController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,6 @@
 				63DD4F5F1F5B44B30096E605 /* AppDelegate.swift */,
 				84EF9BAB1F5D6374009B17BB /* StopwatchController.swift */,
 				63DD4F631F5B44B40096E605 /* Main.storyboard */,
-				84EF9BB71F5D9CA0009B17BB /* PopoverEditController.swift */,
 				84EF9BB51F5D9A1A009B17BB /* ModalEditTitleController.swift */,
 				63DD4F661F5B44B40096E605 /* Assets.xcassets */,
 				63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */,
@@ -143,7 +140,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84EF9BB81F5D9CA0009B17BB /* PopoverEditController.swift in Sources */,
 				63DD4F601F5B44B30096E605 /* AppDelegate.swift in Sources */,
 				84EF9BAC1F5D6374009B17BB /* StopwatchController.swift in Sources */,
 				84EF9BB61F5D9A1A009B17BB /* ModalEditTitleController.swift in Sources */,
