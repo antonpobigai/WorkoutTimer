@@ -58,8 +58,8 @@
 			children = (
 				63DD4F5F1F5B44B30096E605 /* AppDelegate.swift */,
 				84EF9BAB1F5D6374009B17BB /* StopwatchController.swift */,
-				63DD4F631F5B44B40096E605 /* Main.storyboard */,
 				84EF9BB51F5D9A1A009B17BB /* ModalEditTitleController.swift */,
+				63DD4F631F5B44B40096E605 /* Main.storyboard */,
 				63DD4F661F5B44B40096E605 /* Assets.xcassets */,
 				63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */,
 				63DD4F6B1F5B44B40096E605 /* Info.plist */,

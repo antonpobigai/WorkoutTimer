@@ -51,59 +51,27 @@
                                     <color key="titleColor" red="1" green="0.1300676026" blue="0.1893736523" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qcv-7q-0Vl" kind="modal" modalPresentationStyle="currentContext" id="pFZ-cx-e2U"/>
+                                    <action selector="invoke:" destination="IT1-aL-lxp" eventType="touchUpInside" id="pts-Ne-jhQ"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" id="T5d-tI-WDR">
+                                <rect key="frame" x="67" y="115" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="rFX-iK-YNH" kind="embed" id="Xdt-ZP-p8W"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Stc-Ux-WUq"/>
+                    <connections>
+                        <outlet property="modalView" destination="T5d-tI-WDR" id="Nm0-a4-coG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psA-C9-M1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="447.5" y="-662.5"/>
-        </scene>
-        <!--Modal Edit Title Controller-->
-        <scene sceneID="Ekt-TR-iED">
-            <objects>
-                <viewController id="qcv-7q-0Vl" customClass="ModalEditTitleController" customModule="WorkoutTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UlX-Bt-Y1X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" id="6jf-HP-kFx" userLabel="Modal View">
-                                <rect key="frame" x="67" y="269" width="250" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wSR-4V-mHo">
-                                        <rect key="frame" x="8" y="8" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="X"/>
-                                        <connections>
-                                            <action selector="modelDone:" destination="qcv-7q-0Vl" eventType="touchUpInside" id="NQY-fs-JRh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q0x-7q-9Hu">
-                                        <rect key="frame" x="180" y="200" width="40" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="OK"/>
-                                        <connections>
-                                            <action selector="ok:" destination="qcv-7q-0Vl" eventType="touchUpInside" id="QEA-DR-XXy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.34619828345070425" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dgP-Xg-EHd"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HKg-y9-Wu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1049" y="-662"/>
+            <point key="canvasLocation" x="424" y="-631"/>
         </scene>
         <!--Timer-->
         <scene sceneID="VCZ-BM-V4g">
@@ -150,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="93Q-nk-xm8" id="x3j-iv-Uz1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -209,18 +177,29 @@
             </objects>
             <point key="canvasLocation" x="-773.75" y="162.30333333333331"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Cl0-zO-LDP">
+        <!--Modal Edit Title Controller-->
+        <scene sceneID="Pf7-sM-NMB">
             <objects>
-                <viewController id="yp5-uA-p8g" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NU1-uY-gTZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="rFX-iK-YNH" customClass="ModalEditTitleController" customModule="WorkoutTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7LT-hv-umW">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dmy-xr-y7d">
+                                <rect key="frame" x="105" y="78" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="ok:" destination="rFX-iK-YNH" eventType="touchUpInside" id="3EQ-pu-V5Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d7F-5z-o2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EcN-oU-Hnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="876" y="-629"/>
         </scene>
     </scenes>
     <resources>

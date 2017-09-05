@@ -20,11 +20,11 @@ class ModalEditTitleController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func modelDone(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBAction func ok(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        print("Poidyk")
+        
+        
     }
     
 
