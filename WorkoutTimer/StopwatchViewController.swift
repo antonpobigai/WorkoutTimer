@@ -58,6 +58,7 @@ class StopwatchViewController: UIViewController {
                 sender.setImage(img, for: .normal)
             }
             isStarted = true
+            //problem with git
         }
         else {
             timer.invalidate()
