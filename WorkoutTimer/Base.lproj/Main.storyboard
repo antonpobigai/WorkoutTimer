@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RTH-uR-5g5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RTH-uR-5g5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,9 +21,70 @@
                     <view key="view" contentMode="scaleToFill" id="juw-Il-KD2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz9-nX-RIQ">
+                                <rect key="frame" x="9" y="67" width="357" height="58"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86L-fH-BJ1">
+                                        <rect key="frame" x="304" y="14" width="61" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="D2x-TM-nfy" eventType="touchUpInside" id="PgJ-UY-ZFM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-4U-BXV">
+                                        <rect key="frame" x="8" y="19" width="294" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77F-GD-1QQ">
+                                <rect key="frame" x="9" y="128" width="357" height="482"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYy-i8-MdR">
+                                        <rect key="frame" x="163" y="237" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="clock"/>
+                                        <connections>
+                                            <action selector="startButton:" destination="D2x-TM-nfy" eventType="touchUpInside" id="Ecq-g2-peO"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uou-kj-Nkw">
+                                        <rect key="frame" x="91" y="87" width="174" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="60"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="xz9-nX-RIQ" secondAttribute="trailing" constant="-7" id="02h-xc-Ibc"/>
+                            <constraint firstItem="77F-GD-1QQ" firstAttribute="top" secondItem="juw-Il-KD2" secondAttribute="top" constant="128" id="4EI-49-6mp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="77F-GD-1QQ" secondAttribute="trailing" constant="-7" id="HRv-TN-l15"/>
+                            <constraint firstItem="xz9-nX-RIQ" firstAttribute="leading" secondItem="juw-Il-KD2" secondAttribute="leadingMargin" constant="-7" id="WKG-gp-p0u"/>
+                            <constraint firstItem="77F-GD-1QQ" firstAttribute="leading" secondItem="juw-Il-KD2" secondAttribute="leadingMargin" constant="-7" id="XhC-yF-jQ5"/>
+                            <constraint firstItem="xz9-nX-RIQ" firstAttribute="top" secondItem="FHJ-7E-a9r" secondAttribute="bottom" constant="3" id="blA-DN-FMz"/>
+                            <constraint firstItem="77F-GD-1QQ" firstAttribute="top" secondItem="xz9-nX-RIQ" secondAttribute="bottom" constant="3" id="f17-du-jIK"/>
+                            <constraint firstItem="BL6-Ye-dht" firstAttribute="top" secondItem="77F-GD-1QQ" secondAttribute="bottom" constant="8" id="lan-wc-KjJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OfN-TK-5gL"/>
+                    <connections>
+                        <outlet property="clockLabel" destination="Uou-kj-Nkw" id="zuq-NP-lFx"/>
+                        <outlet property="titleLabel" destination="Nhh-4U-BXV" id="g1I-Ig-3Dt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ntL-Gm-1Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -80,10 +141,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJf-cU-lgh">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <rect key="frame" x="67" y="269" width="241" height="128"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDi-OS-WB2">
-                                <rect key="frame" x="164" y="231" width="46" height="30"/>
+                                <rect key="frame" x="164.5" y="231" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="e4m-OT-OIX" kind="show" id="cGY-lI-3gP"/>
@@ -173,7 +234,7 @@
         <scene sceneID="sBa-lx-4YI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UO7-nT-yez" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timer" image="clock-timer-7" springLoaded="YES" id="lQ9-tX-5XL"/>
+                    <tabBarItem key="tabBarItem" title="Timer" image="clock-timer-7" id="lQ9-tX-5XL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cU3-aD-T8R">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
