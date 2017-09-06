@@ -48,35 +48,42 @@ class StopwatchViewController: UIViewController {
     var timer = Timer()
     var seconds = 0
     var minutes = 0
+    var miliseconds = 0
     var isStarted = false
     @IBOutlet weak var clockLabel: UILabel!
 
+    @IBOutlet weak var startButton: UIButton!
     @IBAction func startButton(_ sender: UIButton) {
         if isStarted == false {
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(StopwatchViewController.action), userInfo: nil, repeats: true)
-            if let img = UIImage(named: "clock-timer-7") {
-                sender.setImage(img, for: .normal)
-            }
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(StopwatchViewController.action), userInfo: nil, repeats: true)
+            sender.setTitle("Pause", for: .normal)
             isStarted = true
-            //problem with git
         }
         else {
             timer.invalidate()
-            seconds = 0
-            clockLabel.text = "00:00"
-            if let img = UIImage(named: "clock") {
-                sender.setImage(img, for: .normal)
-            }
+            sender.setTitle("Start", for: .normal)
             isStarted = false
         }
     }
+    @IBAction func reserButtonPressed(_ sender: UIButton) {
+        seconds = 0
+        minutes = 0
+        timer.invalidate()
+        clockLabel.text = "00:00.00"
+        startButton.setTitle("Start", for: .normal)
+        isStarted = false
+    }
     func action() {
-        seconds += 1
+        miliseconds += 1
+        if (miliseconds >= 60) {
+            seconds += 1
+            miliseconds = 0
+        }
         if (seconds >= 60) {
             minutes += 1
             seconds = 0
         }
-        clockLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        clockLabel.text = String(format: "%02d:%02d.%02d", minutes, seconds, miliseconds)
         
     }
     /*
