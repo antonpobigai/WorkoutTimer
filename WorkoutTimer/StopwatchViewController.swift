@@ -39,23 +39,29 @@ class StopwatchViewController: UIViewController {
             // Get 1st TextField's text
             let textField = alert.textFields![0]
             if textField.text != "" {
-                self.titleLabel.text = textField.text
+                if textField.text!.characters.count < 30 {
+                    self.titleLabel.text = textField.text
+                }
             }
         })
         alert.addAction(submitAction)
         present(alert, animated: true, completion: nil)
     }
+    
     var timer = Timer()
     var seconds = 0
     var minutes = 0
     var miliseconds = 0
     var isStarted = false
+    
     @IBOutlet weak var clockLabel: UILabel!
 
     @IBOutlet weak var startButton: UIButton!
+    
     @IBAction func startButton(_ sender: UIButton) {
         if isStarted == false {
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(StopwatchViewController.action), userInfo: nil, repeats: true)
+           
             sender.setTitle("Pause", for: .normal)
             isStarted = true
         }
@@ -69,6 +75,7 @@ class StopwatchViewController: UIViewController {
         seconds = 0
         minutes = 0
         timer.invalidate()
+        
         clockLabel.text = "00:00.00"
         startButton.setTitle("Start", for: .normal)
         isStarted = false
@@ -84,16 +91,6 @@ class StopwatchViewController: UIViewController {
             seconds = 0
         }
         clockLabel.text = String(format: "%02d:%02d.%02d", minutes, seconds, miliseconds)
-        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

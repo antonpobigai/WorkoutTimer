@@ -15,6 +15,8 @@
 		63DD4F651F5B44B40096E605 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F631F5B44B40096E605 /* Main.storyboard */; };
 		63DD4F671F5B44B40096E605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F661F5B44B40096E605 /* Assets.xcassets */; };
 		63DD4F6A1F5B44B40096E605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */; };
+		842A1CE81F67C9BE006AEEFE /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842A1CE71F67C9BE006AEEFE /* Help.swift */; };
+		84EB503F1F65C88600889212 /* TimerSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB503E1F65C88600889212 /* TimerSettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		63DD4F661F5B44B40096E605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63DD4F691F5B44B40096E605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63DD4F6B1F5B44B40096E605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842A1CE71F67C9BE006AEEFE /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
+		84EB503E1F65C88600889212 /* TimerSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +64,27 @@
 		63DD4F5E1F5B44B30096E605 /* WorkoutTimer */ = {
 			isa = PBXGroup;
 			children = (
+				84A3A81B1F6152700018461C /* Models */,
 				63DD4F5F1F5B44B30096E605 /* AppDelegate.swift */,
 				63DD4F611F5B44B30096E605 /* ViewController.swift */,
 				63DD4F631F5B44B40096E605 /* Main.storyboard */,
+				84EB503E1F65C88600889212 /* TimerSettingsVC.swift */,
 				63DD4F661F5B44B40096E605 /* Assets.xcassets */,
 				63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */,
 				63DD4F6B1F5B44B40096E605 /* Info.plist */,
 				63AB1AC21F5EEA6700A1FF47 /* TimerViewController.swift */,
+				842A1CE71F67C9BE006AEEFE /* Help.swift */,
 				63AB1AC41F5EEAD900A1FF47 /* StopwatchViewController.swift */,
 				63AB1AC61F5EEB0F00A1FF47 /* DashboardViewController.swift */,
 			);
 			path = WorkoutTimer;
+			sourceTree = "<group>";
+		};
+		84A3A81B1F6152700018461C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842A1CE81F67C9BE006AEEFE /* Help.swift in Sources */,
 				63AB1AC51F5EEAD900A1FF47 /* StopwatchViewController.swift in Sources */,
+				84EB503F1F65C88600889212 /* TimerSettingsVC.swift in Sources */,
 				63DD4F621F5B44B30096E605 /* ViewController.swift in Sources */,
 				63AB1AC71F5EEB0F00A1FF47 /* DashboardViewController.swift in Sources */,
 				63AB1AC31F5EEA6700A1FF47 /* TimerViewController.swift in Sources */,
