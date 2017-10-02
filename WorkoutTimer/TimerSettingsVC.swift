@@ -8,17 +8,52 @@
 
 import UIKit
 
-class TimerSettingsVC: UIViewController {
-    @IBOutlet weak var minTextEdit: UITextField!
-    var txtMin: String = ""
+protocol ValueReturner {
+    var returnValueToCaller: ((Any) -> ())?  { get set }
+}
+
+class TimerSettingsVC: UIViewController, ValueReturner {
+    var returnValueToCaller: ((Any) -> ())?
     
-    @IBOutlet weak var secTextEdit: UITextField!
-    var txtSec: String = ""
-    
+    @IBOutlet weak var minWorkText: UITextField!
+    var minWork :Int = 0
+
+    @IBOutlet weak var secWorkText: UITextField!
+    var secWork :Double = 0
+
     @IBOutlet weak var loadTextEdit: UITextField!
-    var txtLoad: String = ""
+    var load :Int = 0
+
+    @IBOutlet weak var minRestText: UITextField!
+    var minRest :Int = 0
     
+    @IBOutlet weak var secRestText: UITextField!
+    var secRest :Double = 0
+    
+    @IBOutlet weak var roundsText: UITextField!
+    var rounds :Int = 0
+    
+    func intForm(_ string: String?) -> Int {
+        if let txt = string {
+            return Int(txt)!
+        }
+        return 0
+    }
+    func doubleForm(_ string: String?) -> Double {
+        if let txt = string {
+            return Double(txt)!
+        }
+        return 0
+    }
     @IBAction func donePressed(_ sender: UIButton) {
+        let turple :(Int,Double, Int, Double, Int, Int) =
+            (intForm(minWorkText.text),
+             doubleForm(secWorkText.text),
+             intForm(minRestText.text),
+             doubleForm(secRestText.text),
+             intForm(loadTextEdit.text),
+             intForm(roundsText.text))
+        returnValueToCaller?(turple)
         dismiss(animated: true, completion: nil)
     }
     
@@ -26,24 +61,17 @@ class TimerSettingsVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        minTextEdit.text = txtMin
-        secTextEdit.text = txtSec
-        loadTextEdit.text = txtLoad
+        //minWorkText.text = String(minWork)
+        minWorkText.text = formatter.string(from: NSNumber(value: minWork))
+        secWorkText.text = formatter.string(from: NSNumber(value: secWork))
+        minRestText.text = formatter.string(from: NSNumber(value: minRest))
+        secRestText.text = formatter.string(from: NSNumber(value: secRest))
+        loadTextEdit.text = formatter.string(from: NSNumber(value: load))
+        roundsText.text = formatter.string(from: NSNumber(value: rounds))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destionationVC :TimerViewController = segue.destination as! TimerViewController
-        
-        destionationVC.startSec = Int(secTextEdit.text!)!
-        destionationVC.startMin = Int(minTextEdit.text!)!
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 }

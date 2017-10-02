@@ -12,7 +12,7 @@ class StopwatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        timer.send(lbl: clockLabel, restLabel: nil, state: nil, loading: nil, roundsLabel: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -48,10 +48,10 @@ class StopwatchViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    var timer = Timer()
-    var seconds = 0
-    var minutes = 0
-    var miliseconds = 0
+    var timer = Time()
+    //var seconds = 0.0
+    //var minutes = 0
+    //var miliseconds = 0
     var isStarted = false
     
     @IBOutlet weak var clockLabel: UILabel!
@@ -60,37 +60,20 @@ class StopwatchViewController: UIViewController {
     
     @IBAction func startButton(_ sender: UIButton) {
         if isStarted == false {
-            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(StopwatchViewController.action), userInfo: nil, repeats: true)
-           
+
+            timer.start(interval: 0.01, selector: #selector(Time.stopWatchAction))
             sender.setTitle("Pause", for: .normal)
             isStarted = true
         }
         else {
-            timer.invalidate()
+            timer.pause()
             sender.setTitle("Start", for: .normal)
             isStarted = false
         }
     }
-    @IBAction func reserButtonPressed(_ sender: UIButton) {
-        seconds = 0
-        minutes = 0
-        timer.invalidate()
-        
-        clockLabel.text = "00:00.00"
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+        timer.reset()
         startButton.setTitle("Start", for: .normal)
         isStarted = false
     }
-    func action() {
-        miliseconds += 1
-        if (miliseconds >= 60) {
-            seconds += 1
-            miliseconds = 0
-        }
-        if (seconds >= 60) {
-            minutes += 1
-            seconds = 0
-        }
-        clockLabel.text = String(format: "%02d:%02d.%02d", minutes, seconds, miliseconds)
-    }
-
 }
