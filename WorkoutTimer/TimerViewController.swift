@@ -14,21 +14,9 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         clockLabel.text = String(format: "%02d:%02.0f", timer.startM, timer.startS)
-        restLabel.text = String(format: "%02d:%02.0f", timer.getRestMins(), timer.getRestSecs())
+        restLabel.text = String(format: "%02d:%02.0f", timer.getRestMins, timer.getRestSecs)
         roundsLabel!.text = "1 / \(timer.getRounds)"
-        timer.send(lbl: clockLabel, restLabel: restLabel, state: stateLabel, loading: loading, roundsLabel: roundsLabel)
-        
-        let url = Bundle.main.url(forResource: "work", withExtension: "wav")
-        do {
-            if let path = url {
-            audioPlayer = try AVAudioPlayer(contentsOf: path)
-            audioPlayer.play()
-            audioPlayer.numberOfLoops = -1
-            }
-        }
-        catch {
-            print("sound doesn't load")
-        }
+        timer.send(lbl: clockLabel, restLabel: restLabel, loading: loading, roundsLabel: roundsLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +42,9 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
             let textField = alert.textFields![0]
             if textField.text != "" {
                 if textField.text!.characters.count < 30 {
-                    self.titleLabel.text = textField.text
+                    if (textField.text?.characters.count)! < 15 {
+                        self.titleLabel.text = textField.text
+                    }
                 }
             }
         })
@@ -62,15 +52,11 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
         present(alert, animated: true, completion: nil)
     }
     var isStarted = false
-    var timer: Time = Time(min: 0, sec: 2, minsForRest: 0, secsForRest: 3, secsForLoad: 0, rounds: 1)
-    
-    var audioPlayer = AVAudioPlayer()
+    var timer: Time = Time(min: 0, sec: 30, minsForRest: 0, secsForRest: 30, secsForLoad: 0, rounds: 5)
 
     @IBOutlet weak var clockLabel: UILabel!
     
     @IBOutlet weak var restLabel: UILabel!
-    
-    @IBOutlet weak var stateLabel: UILabel!
     
     @IBOutlet weak var loading: UILabel!
     
@@ -81,16 +67,13 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
     @IBAction func startButton(_ sender: UIButton) {
         if isStarted == false {
             timer.start(interval: 1, selector: #selector(Time.action))
-            sender.setBackgroundImage(#imageLiteral(resourceName: "button-pause"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             isStarted = true
-            //audioPlayer.prepareToPlay()
-            //audioPlayer.play()
         }
         else {
             timer.pause()
-            audioPlayer.pause()
-            if #imageLiteral(resourceName: "button-play") as UIImage? != nil {
-                sender.setBackgroundImage(#imageLiteral(resourceName: "button-play"), for: .normal)
+            if #imageLiteral(resourceName: "start") as UIImage? != nil {
+                sender.setImage(#imageLiteral(resourceName: "start"), for: .normal)
             }
             else {
                 sender.setTitle("Play", for: .normal)
@@ -100,38 +83,28 @@ class TimerViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         timer.reset()
-        //audioPlayer.stop()
-        if #imageLiteral(resourceName: "button-play") as UIImage? != nil {
-            startButton.setBackgroundImage(#imageLiteral(resourceName: "button-play"), for: .normal)
-        }
-        else {
-            startButton.setTitle("Play", for: .normal)
-        }
+        startButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
         isStarted = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destionationVC :TimerSettingsVC = segue.destination as! TimerSettingsVC
-        destionationVC.secWork = timer.getStartSecs()
-        destionationVC.minWork = timer.getStartMins()
-        destionationVC.secRest = timer.getRestSecs()
-        destionationVC.minRest = timer.getRestMins()
-        destionationVC.load = timer.getLoad()
-        destionationVC.rounds = timer.getRounds 
-        
+        let destionationVC :TimerSettingsController = segue.destination as! TimerSettingsController
+        destionationVC.workSec = Int(timer.getStartSecs)
+        destionationVC.workMin = timer.getStartMins
+        destionationVC.restSec = Int(timer.getRestSecs)
+        destionationVC.restMin = timer.getRestMins
+        destionationVC.load = timer.getLoad
+        destionationVC.rounds = timer.getRounds
+ 
         var secondViewController = segue.destination as? ValueReturner
         secondViewController?.returnValueToCaller = someFunctionThatWillHandleYourReturnValue
     }
     func someFunctionThatWillHandleYourReturnValue(returnedValue1: Any) {
         if let arr = returnedValue1 as? (Int,Double, Int, Double, Int, Int) {
             timer.reload(min: arr.0, sec: arr.1, mRest: arr.2, sRest: arr.3, load: arr.4, rounds: arr.5)
-            if #imageLiteral(resourceName: "button-play") as UIImage? != nil {
-                startButton.setBackgroundImage(#imageLiteral(resourceName: "button-play"), for: .normal)
-            }
-            else {
-                startButton.setTitle("Play", for: .normal)
-            }
+
+            startButton.setBackgroundImage(#imageLiteral(resourceName: "start"), for: .normal)
         }
-        clockLabel.text = String(format: "%02d:%02.0f", timer.getStartMins(), timer.getStartSecs())
+        clockLabel.text = String(format: "%02d:%02.0f", timer.getStartMins, timer.getStartSecs)
     }
 }

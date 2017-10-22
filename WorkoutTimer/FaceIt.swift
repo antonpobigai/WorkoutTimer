@@ -12,24 +12,23 @@ import UIKit
 class FaceView: UIView
 {
     @IBInspectable
-    var startX: CGFloat = 100
-    
+    var startX: CGFloat = 20
+    var levelY: CGFloat = 200
     override func draw(_ rect: CGRect) {
         let aPath = UIBezierPath()
         let w = rect.width
-        aPath.move(to: CGPoint(x:startX, y:300))
+        let point = viewWithTag(1)?.frame.minY
+        let point2 = viewWithTag(2)?.frame.maxY
+        levelY = (point2! + point!) / 2 - 5
+        aPath.move(to: CGPoint(x:startX, y:levelY))
         
-        aPath.addLine(to: CGPoint(x:w-startX, y:300))
+        aPath.addLine(to: CGPoint(x:w-startX, y:levelY))
         
-        //Keep using the method addLineToPoint until you get to the one where about to close the path
         aPath.lineWidth = 5.0
         
         aPath.close()
-        
-        //If you want to stroke it with a red color
-        UIColor.black.set()
+        UIColor.red.set()
         aPath.stroke()
-        //If you want to fill it as well
         aPath.fill()
     }
 }

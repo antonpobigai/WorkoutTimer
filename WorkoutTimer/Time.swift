@@ -6,6 +6,7 @@
 //  Copyright © 2017 Ivan Bolgov. All rights reserved.
 //
 import UIKit
+import AVFoundation
 
 class Time {
     
@@ -13,38 +14,7 @@ class Time {
     init() {
         self.startM = 0
         self.startS = 0
-    }
-    init(min: Int, sec: Double) {
-        self.startM = min
-        self.startS = sec
-        self.restM = 0
-        self.restS = 0
-        self.load = 0
-        nowLoad = load
-        self.rounds = 0
-        roundsLabel?.text = String(format: "%02d / %02d", nowRound, rounds!)
-    }
-    init(min: Int, sec: Double, minsForRest: Int?, secsForRest: Double) {
-        self.startM = min
-        self.startS = sec
-        self.restM = minsForRest
-        self.restS = secsForRest
-        self.load = 0
-        nowLoad = load
-        self.rounds = 0
-        roundsLabel?.text = String(format: "%02d / %02d", nowRound, rounds!)
-    }
-    init(min: Int, sec: Double, minsForRest: Int?, secsForRest: Double, secsForLoad: Int) {
-        self.startM = min
-        m = startM
-        self.startS = sec
-        s = startS
-        self.restM = minsForRest
-        self.restS = secsForRest
-        self.load = secsForLoad
-        nowLoad = load
-        self.rounds = 0
-        roundsLabel?.text = String(format: "%d / %d", nowRound, rounds!)
+        isStopWatch = true
     }
     init(min: Int, sec: Double, minsForRest: Int?, secsForRest: Double, secsForLoad: Int, rounds:Int) {
         self.startM = min
@@ -56,10 +26,11 @@ class Time {
         self.load = secsForLoad
         nowLoad = load
         self.rounds = rounds
+        isRest = false
+        isStopWatch = false
         roundsLabel?.text = String(format: "%d / %d", nowRound, self.rounds!)
     }
     var label :UILabel?
-    var state :UILabel?
     var restLabel :UILabel?
     private var loading :UILabel?
     private var roundsLabel: UILabel?
@@ -73,7 +44,11 @@ class Time {
     private var rounds: Int?
     private var restM :Int?
     private var restS :Double?
-    private var isRest = false
+    private var isRest :Bool?
+    private var isStopWatch :Bool
+    private var player:AVAudioPlayer?
+    
+    private var playerOnce: AVAudioPlayer?
     
     var curentWorkTime : (Int, Double){
         get {
@@ -93,34 +68,94 @@ class Time {
             restLabel!.text = String(format: "%02d:%02.0f", newValue.0, newValue.1)
         }
     }
-    func send(lbl: UILabel, restLabel: UILabel?, state: UILabel?, loading: UILabel?, roundsLabel: UILabel?) {
+    var curentStopWatchTime : (Int, Double){
+        get {
+            let arr = label?.text!.components(separatedBy: ":")
+            return (Int(arr![0])!, Double(arr![1])!)
+        }
+        set {
+            label!.text = String(format: "%02d:%05.2f", newValue.0, newValue.1)
+        }
+    }
+    var audioSet : (String, String) {
+        get {
+            if player != nil {
+                let url = player?.url?.absoluteString
+                print(url!)
+                return ("w", "2")
+            }
+            return ("1", "1")
+        }
+        set {
+            do {
+                let audioPath = Bundle.main.path(forResource: newValue.0, ofType: newValue.1)
+                try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+                player?.numberOfLoops = -1
+            }
+            catch {
+                //ERROR
+            }
+        }
+    }
+    var audioSetOnce : (String, String) {
+        get {
+            if playerOnce != nil {
+                let url = playerOnce?.url?.absoluteString
+                print(url!)
+                return ("w", "2")
+            }
+            return ("1", "1")
+        }
+        set {
+            do {
+                let audioPath = Bundle.main.path(forResource: newValue.0, ofType: newValue.1)
+                try playerOnce = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
+                playerOnce?.numberOfLoops = 0
+            }
+            catch {
+                //ERROR
+            }
+        }
+    }
+    func send(lbl: UILabel, restLabel: UILabel?, loading: UILabel?, roundsLabel: UILabel?) {
         label = lbl
         self.restLabel = restLabel
-        self.state = state
         self.loading = loading
         self.roundsLabel = roundsLabel
     }
     func start(interval: Double, selector:Selector) {
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: selector, userInfo: nil, repeats: true)
-        state?.text = isRest ? "Rest!" : "Work!"
+        audioSet = ("work", "wav")
     }
     
     func reset() {
         timer.invalidate()
-        if let stateLabel = state {
-            stateLabel.text = " "
+        if let audio = player {
+            audio.stop()
         }
         s = startS
         m = startM
-        curentWorkTime = (m, s)
-        curentRestTime = (restM!, restS!)
-        isRest = false
+        if !isStopWatch {
+            curentWorkTime = (m, s)
+        }
+        else {
+            curentStopWatchTime = (m, s)
+        }
+        if let rM = restM, let rS = restS {
+            curentRestTime = (rM, rS)
+        }
+        if isRest != nil {
+            isRest = false
+        }
         nowLoad = load
         nowRound = 1
-        roundsLabel?.text = String(format: "%d / %d", nowRound, rounds!)
+        if let curRounds = rounds {
+            roundsLabel?.text = String(format: "%d / %d", nowRound, curRounds)
+        }
     }
     func pause() {
         timer.invalidate()
+        player?.pause()
     }
     private func display() {
         print("start min\(startM)")
@@ -137,13 +172,14 @@ class Time {
             nowLoad! -= 1
             return
         }
+        player?.prepareToPlay()
+        player?.play()
         loading?.text = " "
         let point = (m,s)
         switch point {
         case (0, 0):
             if isRest == false {
                 goForTheRest()
-                state?.text = "Rest!"
                 isRest = true
             }
             else {
@@ -154,7 +190,6 @@ class Time {
                 }
                 nowRound += 1
                 roundsLabel!.text = String(format: "%d / %d", nowRound, rounds!)
-                state?.text = "Work!"
                 goForTheWork()
                 curentWorkTime = (startM, startS)
                 curentRestTime = (restM!, restS!)
@@ -165,7 +200,7 @@ class Time {
         default:
             s -= 1
         }
-        if !isRest {
+        if !isRest! {
             curentWorkTime = (m, s)
         }
         else {
@@ -178,15 +213,19 @@ class Time {
             m += 1
             s = 0
         }
-        curentWorkTime = (m, s)
+        curentStopWatchTime = (m, s)
     }
     private func goForTheRest() {
         m = restM!
         s = restS!
+        audioSetOnce = ("complete", "wav")
+        playerOnce?.play()
     }
     private func goForTheWork() {
         m = startM
         s = startS
+        audioSetOnce = ("complete", "wav")
+        playerOnce?.play()
     }
     private func prevMinute() {
         m -= 1
@@ -197,12 +236,13 @@ class Time {
         s = 0
     }
     private func finish() {
-        timer.invalidate()
-        state?.text = "Completed"
+        self.reset()
+        audioSetOnce = ("end", "wav")
+        playerOnce?.play()
         
     }
     func reload(min: Int, sec:Double, mRest:Int, sRest:Double, load:Int, rounds:Int) {
-        
+        self.reset()
         startM = min
         startS = sec
         restM = mRest
@@ -210,21 +250,20 @@ class Time {
         self.load = load
         self.rounds = rounds
         self.reset()
-        display()
     }
-    func getStartMins() -> Int {
+    var getStartMins :Int {
         return startM
     }
-    func getStartSecs() -> Double {
+    var getStartSecs :Double {
         return startS
     }
-    func getRestMins() -> Int {
+    var getRestMins :Int {
         return restM!
     }
-    func getRestSecs() -> Double {
+    var getRestSecs :Double {
         return restS!
     }
-    func getLoad() -> Int {
+    var getLoad :Int {
         return load!
     }
     var getRounds :Int {
@@ -239,5 +278,4 @@ let formatter:NumberFormatter = {
     formatter.groupingSeparator = " "
     formatter.locale = Locale.current
     return formatter
-    
 } ()

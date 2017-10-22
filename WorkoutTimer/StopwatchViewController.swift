@@ -12,7 +12,7 @@ class StopwatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        timer.send(lbl: clockLabel, restLabel: nil, state: nil, loading: nil, roundsLabel: nil)
+        timer.send(lbl: clockLabel, restLabel: nil, loading: nil, roundsLabel: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -62,18 +62,18 @@ class StopwatchViewController: UIViewController {
         if isStarted == false {
 
             timer.start(interval: 0.01, selector: #selector(Time.stopWatchAction))
-            sender.setTitle("Pause", for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             isStarted = true
         }
         else {
             timer.pause()
-            sender.setTitle("Start", for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "start"), for: .normal)
             isStarted = false
         }
     }
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         timer.reset()
-        startButton.setTitle("Start", for: .normal)
+        startButton.setImage(#imageLiteral(resourceName: "start"), for: .normal)
         isStarted = false
     }
 }

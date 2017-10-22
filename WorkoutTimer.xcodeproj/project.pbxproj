@@ -16,8 +16,12 @@
 		63DD4F671F5B44B40096E605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F661F5B44B40096E605 /* Assets.xcassets */; };
 		63DD4F6A1F5B44B40096E605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */; };
 		840AA4D81F7FD13B002A0D26 /* TimerSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AA4D71F7FD13A002A0D26 /* TimerSettingsVC.swift */; };
+		8420513F1F8E8C03003FACF2 /* TimerSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420513E1F8E8C03003FACF2 /* TimerSettingsController.swift */; };
+		84AC10611F84BF610052DF85 /* complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84AC10601F84BF5A0052DF85 /* complete.wav */; };
 		84CC442C1F6FD449005F6B73 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CC442B1F6FD449005F6B73 /* Time.swift */; };
+		84D45B2A1F83C60D000CBA14 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84D45B291F83C605000CBA14 /* end.wav */; };
 		84F030DA1F7AB1F4003DE621 /* FaceIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F030D91F7AB1F4003DE621 /* FaceIt.swift */; };
+		84FFDB471F83AC5200E1EF94 /* work.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84C815851F8281B300E27E62 /* work.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +36,13 @@
 		63DD4F691F5B44B40096E605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63DD4F6B1F5B44B40096E605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		840AA4D71F7FD13A002A0D26 /* TimerSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSettingsVC.swift; sourceTree = "<group>"; };
+		8420513E1F8E8C03003FACF2 /* TimerSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettingsController.swift; sourceTree = "<group>"; };
+		84AC10601F84BF5A0052DF85 /* complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = complete.wav; sourceTree = "<group>"; };
+		84C6D4A21F8F50F7005D1354 /* rocket.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rocket.jpg; sourceTree = "<group>"; };
+		84C6D4A31F8F529E005D1354 /* mom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mom.jpg; sourceTree = "<group>"; };
 		84C815851F8281B300E27E62 /* work.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = work.wav; sourceTree = "<group>"; };
 		84CC442B1F6FD449005F6B73 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		84D45B291F83C605000CBA14 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
 		84F030D91F7AB1F4003DE621 /* FaceIt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,8 +81,11 @@
 				63DD4F5F1F5B44B30096E605 /* AppDelegate.swift */,
 				63DD4F611F5B44B30096E605 /* ViewController.swift */,
 				63DD4F631F5B44B40096E605 /* Main.storyboard */,
+				8420513E1F8E8C03003FACF2 /* TimerSettingsController.swift */,
 				84F030D91F7AB1F4003DE621 /* FaceIt.swift */,
 				63DD4F661F5B44B40096E605 /* Assets.xcassets */,
+				84C6D4A21F8F50F7005D1354 /* rocket.jpg */,
+				84C6D4A31F8F529E005D1354 /* mom.jpg */,
 				63DD4F681F5B44B40096E605 /* LaunchScreen.storyboard */,
 				63DD4F6B1F5B44B40096E605 /* Info.plist */,
 				84CC442B1F6FD449005F6B73 /* Time.swift */,
@@ -96,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				84C815851F8281B300E27E62 /* work.wav */,
+				84AC10601F84BF5A0052DF85 /* complete.wav */,
+				84D45B291F83C605000CBA14 /* end.wav */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -132,7 +146,7 @@
 				TargetAttributes = {
 					63DD4F5B1F5B44B30096E605 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = E583K64N6A;
+						DevelopmentTeam = DU7RQJED2A;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -161,6 +175,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AC10611F84BF610052DF85 /* complete.wav in Resources */,
+				84D45B2A1F83C60D000CBA14 /* end.wav in Resources */,
+				84FFDB471F83AC5200E1EF94 /* work.wav in Resources */,
 				63DD4F6A1F5B44B40096E605 /* LaunchScreen.storyboard in Resources */,
 				63DD4F671F5B44B40096E605 /* Assets.xcassets in Resources */,
 				63DD4F651F5B44B40096E605 /* Main.storyboard in Resources */,
@@ -181,6 +198,7 @@
 				84CC442C1F6FD449005F6B73 /* Time.swift in Sources */,
 				63AB1AC71F5EEB0F00A1FF47 /* DashboardViewController.swift in Sources */,
 				63AB1AC31F5EEA6700A1FF47 /* TimerViewController.swift in Sources */,
+				8420513F1F8E8C03003FACF2 /* TimerSettingsController.swift in Sources */,
 				63DD4F601F5B44B30096E605 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +253,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -254,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -291,6 +310,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -304,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -316,11 +336,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E583K64N6A;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WorkoutTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -331,11 +356,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = E583K64N6A;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WorkoutTimer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WorkoutTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -352,7 +382,7 @@
 				63DD4F6D1F5B44B40096E605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		63DD4F6E1F5B44B40096E605 /* Build configuration list for PBXNativeTarget "WorkoutTimer" */ = {
 			isa = XCConfigurationList;
@@ -361,7 +391,7 @@
 				63DD4F701F5B44B40096E605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
